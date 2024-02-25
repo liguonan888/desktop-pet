@@ -40,7 +40,7 @@ const isDebug =
   process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
 
 if (isDebug) {
-  require('electron-debug')();
+  require('electron-debug')({devToolsMode: 'detach'});
 }
 
 const installExtensions = async () => {
@@ -58,7 +58,7 @@ const installExtensions = async () => {
 
 const createWindow = async () => {
   if (isDebug) {
-    await installExtensions();
+    // await installExtensions();
   }
 
   const RESOURCES_PATH = app.isPackaged
